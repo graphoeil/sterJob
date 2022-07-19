@@ -1,0 +1,19 @@
+// Imports
+import React from "react";
+
+// Component
+const FormRow = ({ type, name, value, handleChange, labelText }) => {
+
+	// Return
+	return(
+		<div className="form-row">
+			<label htmlFor={ name } className="form-label">{ labelText || name }</label>
+			<input type={ type } id={ name } name={ name } className="form-input"
+				value={ value } onChange={ handleChange } />
+		</div>
+	);
+
+};
+
+// Export
+export default FormRow;
