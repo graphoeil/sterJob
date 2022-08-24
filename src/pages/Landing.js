@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Wrapper from "../assets/wrappers/LandingPage";
-import main from "../assets/images/main.svg";
+import jobHunt from "../assets/images/jobHunt.svg";
 import { Logo } from "../components";
 
 // Component
@@ -29,7 +29,7 @@ const Landing = () => {
 				{/* Info */}
 				
 				{/* Main image, It's a 2 column layout */}
-				<img src={ main } alt="Job hunt" className="img main-img" />
+				<img src={ jobHunt } alt="Job hunt" className="img main-img" />
 				{/* Main image */}
 			
 			</div>

@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Wrapper from "../assets/wrappers/ErrorPage";
-import notfound from "../assets/images/not-found.svg";
+import notFound from "../assets/images/notFound.svg";
 
 // Component
 const Error = () => {
@@ -11,7 +11,7 @@ const Error = () => {
 	return(
 		<Wrapper className="full-page">
 			<div>
-				<img src={ notfound } alt="404!" />
+				<img src={ notFound } alt="404!" />
 				<h3>Ooh ! page not found</h3>
 				<p>We can't seem to find the pages you're looking for...</p>
 				<Link to="/">Back home</Link>
