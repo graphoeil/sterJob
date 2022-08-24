@@ -1,6 +1,6 @@
 # Jobster
 
-Project in Action - [Jobster](jobster-redux-toolkit-v2.netlify.app)
+Project in Action - [Jobster](https://jobster-redux-toolkit-v2.netlify.app)
 
 #### React Course
 
