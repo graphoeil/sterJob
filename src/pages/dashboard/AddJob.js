@@ -1,5 +1,5 @@
 // Imports
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -17,14 +17,6 @@ const AddJob = () => {
 
 	// Dispatch
 	const dispatch = useDispatch();
-
-	// Autofill job location
-	const { user:{ location } } = useSelector((store) => { return store.user });
-	useEffect(() => {
-		if (!isEditing){
-			dispatch(handleChange({ name:'jobLocation', value:location }));
-		}
-	},[dispatch, isEditing, location]);
 
 	// Inputs change
 	const handleJobInput = (e) => {

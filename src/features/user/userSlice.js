@@ -13,15 +13,9 @@ const initialState = {
 
 // Async methods
 // user variable comes from Register.js and Profile.js in (pages subfolder)
-export const registerUser = createAsyncThunk('user/registerUser', (user, thunkAPI) => {
-	return registerUserThunkFn('/auth/register', user, thunkAPI);
-});
-export const loginUser = createAsyncThunk('user/loginUser', (user, thunkAPI) => {
-	return loginUserThunkFn('/auth/login', user, thunkAPI);
-});
-export const updateUser = createAsyncThunk('user/updateUser', (user, thunkAPI) => {
-	return updateUserThunkFn('/auth/updateUser', user, thunkAPI);
-});
+export const registerUser = createAsyncThunk('user/registerUser', registerUserThunkFn);
+export const loginUser = createAsyncThunk('user/loginUser', loginUserThunkFn);
+export const updateUser = createAsyncThunk('user/updateUser', updateUserThunkFn);
 export const clearStore = createAsyncThunk('user/clearStore', clearStoreThunkFn);
 
 // Slice

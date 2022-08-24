@@ -6,25 +6,25 @@ import { clearValues } from "../job/jobSlice";
 import { clearAllJobsState } from "../allJobs/allJobsSlice";
 
 // Thunk methods
-export const registerUserThunkFn = async(url, user, thunkAPI) => {
+export const registerUserThunkFn = async(user, thunkAPI) => {
 	try {
-		const response = await customFetch.post(url, user);
+		const response = await customFetch.post('/auth/register', user);
 		return response.data;
 	} catch (error){
 		return thunkAPI.rejectWithValue(firstLetterUpper(error.response.data.msg));
 	}
 };
-export const loginUserThunkFn = async(url, user, thunkAPI) => {
+export const loginUserThunkFn = async(user, thunkAPI) => {
 	try {
-		const response = await customFetch.post(url, user);
+		const response = await customFetch.post('/auth/login', user);
 		return response.data;
 	} catch (error){
 		return thunkAPI.rejectWithValue(firstLetterUpper(error.response.data.msg));
 	}
 };
-export const updateUserThunkFn = async(url, user, thunkAPI) => {
+export const updateUserThunkFn = async(user, thunkAPI) => {
 	try {
-		const response = await customFetch.patch(url, user, {
+		const response = await customFetch.patch('/auth/updateUser', user, {
 			headers:{
 				// Here with getState we access user store and then user in state ,-)
 				authorization:`Bearer ${ thunkAPI.getState().user.user.token }`
