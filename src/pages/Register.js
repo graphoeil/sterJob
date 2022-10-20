@@ -1,5 +1,5 @@
 // Imports
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +17,13 @@ const initialState = {
 
 // Component
 const Register = () => {
+
+	// Autofocus on first input
+	const nameRef = useRef();
+	const emailRef = useRef();
+	useEffect(() => {
+		emailRef.current.focus();
+	},[]);
 
 	// Store
 	const { user, isLoading } = useSelector((store) => { return store.user; });
@@ -78,7 +85,15 @@ const Register = () => {
 			return { 
 				...oldState, isMember:!isMember 
 			};
-		})
+		});
+		// Reset autofocus, setTimeout => because it's asynchronous ,-)
+		setTimeout(() => {
+			if (!isMember){
+				emailRef.current.focus();
+			} else {
+				nameRef.current.focus();
+			}
+		}, 50);
 	};
 
 	// Return
@@ -93,13 +108,13 @@ const Register = () => {
 
 				{/* Name */}
 				{
-					!isMember && <FormRow type="text" name="name" 
+					!isMember && <FormRow type="text" name="name" ref={ nameRef }
 						value={ name } handleChange={ handleChange }/>
 				}
 				{/* Name */}
 
 				{/* Email */}
-				<FormRow type="email" name="email" value={ email } 
+				<FormRow type="email" name="email" value={ email } ref={ emailRef }
 					handleChange={ handleChange }/>
 				{/* Email */}
 
