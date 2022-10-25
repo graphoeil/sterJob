@@ -124,7 +124,10 @@ const Register = () => {
 				{/* Password */}
 
 				{/* Submit btn */}
-				<button type="submit" className="btn btn-block" disabled={ isLoading }>
+				{/* Disabled also if user, because of the timeout to redirect to dashboard, 
+				which allows to click for one second after the login or register is fullfilled 
+				which resets isLoading to false ,-) */}
+				<button type="submit" className="btn btn-block" disabled={ isLoading || user }>
 					{ isLoading ? 'Loading...' : 'Submit' }
 				</button>
 				<button type="button" className="btn btn-block btn-hipster" onClick={ showDemo }>
