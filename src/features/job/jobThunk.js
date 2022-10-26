@@ -51,6 +51,7 @@ export const editJobThunkFn = async({ jobId, job }, thunkAPI) => {
 	try {
 		const response = await customFetch.patch(`/jobs/${ jobId }`, job, authHeader(thunkAPI));
 		thunkAPI.dispatch(clearValues());
+		thunkAPI.dispatch(getAllJobs());
 		return response.data;
 	} catch (error){
 		return thunkAPI.rejectWithValue(error.response.data.msg);
