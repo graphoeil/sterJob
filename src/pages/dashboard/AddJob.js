@@ -1,6 +1,6 @@
 // Imports
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, useRef } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
@@ -14,6 +14,7 @@ const AddJob = () => {
 	const { isLoading, position, company, jobLocation, 
 		jobType, jobTypeOptions, status, statusOptions, 
 		isEditing, editJobId } = useSelector((store) => { return store.job; });
+	const { user } = useSelector((store) => { return store.user; });
 
 	// Dispatch
 	const dispatch = useDispatch();
@@ -43,6 +44,16 @@ const AddJob = () => {
 		navigate('/all-jobs');
 	};
 
+	// Autofocus on position in add job mode
+	// Get job location from user slice
+	const positionRef = useRef();
+	useEffect(() => {
+		if (!isEditing){
+			positionRef.current.focus();
+			dispatch(handleChange({ name:'jobLocation', value:user.location }));
+		}
+	}, [isEditing, dispatch, user]);
+
 	// Return
 	return(
 		<Wrapper>
@@ -51,7 +62,7 @@ const AddJob = () => {
 				<div className="form-center">
 
 					{/* Position */}
-					<FormRow type="text" name="position" 
+					<FormRow ref={ positionRef } type="text" name="position" 
 						value={ position } handleChange={ handleJobInput }/>
 					{/* Position */}
 
